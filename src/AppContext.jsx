@@ -56,7 +56,9 @@ export const AppContext = ({ children }) => {
     }
 
     setLocalStorage("currentUser", { username, pokemon });
-
+    toast.info(
+      `Welcome, ${username}! Your Pokémon is ${pokemon.name}. They will motivate you on your journey!`
+    );
     if (isNewUser) {
       toast.info(
         `Welcome, ${username}! Your Pokémon is ${pokemon.name}. They will motivate you on your journey!`
