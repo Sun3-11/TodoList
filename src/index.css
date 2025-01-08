@@ -806,7 +806,7 @@ form h4 {
   padding: 20px;
 }
 
-input[type="text"] {
+.inputR[type="text"] {
   padding: 10px;
   margin: 10px;
   border: 1px solid #ccc;
