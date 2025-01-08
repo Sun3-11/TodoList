@@ -1,6 +1,8 @@
 import { MdDelete } from "react-icons/md";
 import { useGlobalContext } from "../../AppContext";
 
+import { IoIosArrowUp } from "react-icons/io";
+
 const Timetable = () => {
   const {
     tasks,
@@ -43,15 +45,22 @@ const Timetable = () => {
           className="arrow"
           style={{
             position: "absolute",
-            width: "4px",
+            width: "2px",
             height: "120px",
             backgroundColor: "red",
-            transform: `rotate(${arrowAngle}deg)  translate(-20px, -50%)`,
-            transformOrigin: "center bottom",
+            transform: `rotate(${arrowAngle}deg)`,
+            color: "red",
+            display: "grid",
+            justifyContent: "center",
+            alignItems: "stretch",
+
             borderRadius: "10px",
             transition: "transform 1s linear",
           }}
-        ></div>
+        >
+          {" "}
+          <IoIosArrowUp />
+        </div>
 
         {tasks.map((task, index) => {
           const startAngle = parseInt(task.timeStart) * 15;
