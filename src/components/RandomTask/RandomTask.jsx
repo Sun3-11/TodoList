@@ -55,6 +55,7 @@ const RandomTask = () => {
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           onKeyDown={handleKeyDown}
+          className="inputR"
         />
         <button className="Add-button" onClick={handleAddTask}>
           Add Task
