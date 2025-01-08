@@ -8,6 +8,9 @@ import Home from "./components/Sidebar/Home/Home";
 import AddTodo from "./components/Sidebar/Todo/AddTodo";
 import Sidebar from "./components/Sidebar/Sidebar";
 
+import RandomTask from "./components/RandomTask/RandomTask";
+import Timetable from "./components/Timetable/Timetable";
+
 const App = () => {
   const { user, login } = useGlobalContext();
 
@@ -28,6 +31,8 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/todos" element={<AddTodo />} />
+                  <Route path="/random-task" element={<RandomTask />} />
+                  <Route path="/time-table" element={<Timetable />} />
                 </Routes>
               </div>
             </div>

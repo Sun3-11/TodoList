@@ -6,10 +6,9 @@ import {
   FaTwitter,
   FaSketch,
   FaHome,
-  FaUserFriends,
-  FaFolderOpen,
-  FaCalendarAlt,
   FaWpforms,
+  FaBusinessTime,
+  FaSpinner,
 } from "react-icons/fa";
 export const links = [
   {
@@ -24,6 +23,18 @@ export const links = [
     url: "/todos",
     text: "AddTodo",
     icon: <FaWpforms />,
+  },
+  {
+    id: 3,
+    url: "/random-task",
+    text: "RandomTask",
+    icon: <FaSpinner />,
+  },
+  {
+    id: 4,
+    url: "/time-table",
+    text: "Timetable",
+    icon: <FaBusinessTime />,
   },
 ];
 

@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Pikachu from "../../../assets/P.png";
 
-const PokemonInfo = ({ pokemon, completedTasks, totalTasks }) => {
+const PokemonInfo = ({
+  pokemon,
+  completedTasks,
+  totalTasks,
+  timetableTasksCompleted,
+}) => {
   const [motivationalMessage, setMotivationalMessage] = useState("");
+  //progress precentage for motivationalMessage
   const progressPercentage =
+    totalTasks > 0
+      ? Math.round(
+          ((completedTasks + timetableTasksCompleted) / totalTasks) * 100
+        )
+      : 0;
+  //todo progress
+  const Todoprogress =
     totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+  //pokemonStrength
+  const pokemonStrength = (completedTasks + timetableTasksCompleted) * 2;
 
   useEffect(() => {
-    //  motivational messages
     if (progressPercentage === 0) {
       setMotivationalMessage("Let's start this adventure together!🤗");
     } else if (progressPercentage > 0 && progressPercentage < 50) {
@@ -30,17 +44,62 @@ const PokemonInfo = ({ pokemon, completedTasks, totalTasks }) => {
         <span className="pokemon-name">{pokemon?.name || "Pikachu"}</span>
       </h4>
       <div className="pokemon-message">{motivationalMessage}</div>
-      <img
-        src={pokemon?.image || Pikachu}
-        alt={pokemon?.name || "Pikachu"}
-        className="pokemon-image "
-      />
-      <p className="pokemon-tasks">
-        Progress: <strong>{progressPercentage}%</strong>
-      </p>
-      <p className="pokemon-tasks" style={{ marginTop: "0.5rem" }}>
-        Tasks Completed: <strong>{completedTasks}</strong> / {totalTasks}{" "}
-      </p>
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <img
+          src={pokemon?.image || Pikachu}
+          alt={pokemon?.name || "Pikachu"}
+          className="pokemon-image"
+        />
+        <div style={{ width: "100px" }}>
+          <div
+            style={{
+              height: "10px",
+              backgroundColor: "#ddd",
+              borderRadius: "5px",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                width: `${Math.min(pokemonStrength, 200)}%`,
+                height: "100%",
+                backgroundColor: "green",
+                transition: "width 0.3s ease",
+              }}
+            ></div>
+          </div>
+          <p
+            style={{
+              fontSize: "0.8rem",
+              marginTop: "0.5rem",
+              textAlign: "center",
+            }}
+          >
+            Strength: {pokemonStrength}/200
+          </p>
+        </div>
+      </div>
+
+      <div style={{ justifyItems: "center" }}>
+        <h5 style={{ padding: "1rem", color: " #294c4d" }}>To Do progress:</h5>
+        <p className="pokemon-tasks">
+          Progress: <strong>{Todoprogress}%</strong>
+        </p>
+        <p className="pokemon-tasks" style={{ marginTop: "0.5rem" }}>
+          Tasks Completed: <strong>{completedTasks}</strong> / {totalTasks}{" "}
+        </p>
+      </div>
+      <hr style={{ margin: "1rem" }} />
+      <div style={{ justifyItems: "center" }}>
+        <h5 style={{ padding: "1rem", color: " #294c4d" }}>
+          Time Table progress:
+        </h5>
+
+        <p className="pokemon-tasks">
+          TimeTable Tasks Completed: <strong>{timetableTasksCompleted}</strong>
+        </p>
+      </div>
+      {/*  */}
     </div>
   );
 };
