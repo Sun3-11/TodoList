@@ -20,49 +20,56 @@ const PokemonInfo = ({
     totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
   //pokemonStrength
   const pokemonStrength = (completedTasks + timetableTasksCompleted) * 2;
+
   useEffect(() => {
-    const calculateMessage = () => {
-      if (progressPercentage === 0) {
-        return "Let's start this adventure together!🤗";
-      } else if (progressPercentage > 0 && progressPercentage < 20) {
-        return `${
+    if (progressPercentage === 0) {
+      setMotivationalMessage("Let's start this adventure together!🤗");
+    } else if (progressPercentage > 0 && progressPercentage < 20) {
+      setMotivationalMessage(
+        ` ${pokemon?.name || "Pikachu"}: You've just begun! Keep pushing!💪`
+      );
+    } else if (progressPercentage >= 20 && progressPercentage < 40) {
+      setMotivationalMessage(
+        `${pokemon?.name || "Pikachu"}: You're doing great! Keep it up!🌟`
+      );
+    } else if (progressPercentage >= 40 && progressPercentage < 60) {
+      setMotivationalMessage(
+        ` ${pokemon?.name || "Pikachu"}: Halfway there! Keep going strong!🔥`
+      );
+    } else if (progressPercentage >= 60 && progressPercentage < 80) {
+      setMotivationalMessage(
+        ` ${pokemon?.name || "Pikachu"}: Almost there! You got this!💥`
+      );
+    } else if (progressPercentage >= 80 && progressPercentage < 100) {
+      setMotivationalMessage(
+        ` ${pokemon?.name || "Pikachu"}: So close! The finish line is near!🏁`
+      );
+    } else if (progressPercentage && Todoprogress === 100) {
+      setMotivationalMessage(
+        `${
           pokemon?.name || "Pikachu"
-        }: You've just begun! Keep pushing!💪`;
-      } else if (progressPercentage >= 20 && progressPercentage < 40) {
-        return `${
-          pokemon?.name || "Pikachu"
-        }: You're doing great! Keep it up!🌟`;
-      } else if (progressPercentage >= 40 && progressPercentage < 60) {
-        return `${
-          pokemon?.name || "Pikachu"
-        }: Halfway there! Keep going strong!🔥`;
-      } else if (progressPercentage >= 60 && progressPercentage < 80) {
-        return `${pokemon?.name || "Pikachu"}: Almost there! You got this!💥`;
-      } else if (progressPercentage >= 80 && progressPercentage < 100) {
-        return `${
-          pokemon?.name || "Pikachu"
-        }: So close! The finish line is near!🏁`;
-      } else if (progressPercentage && Todoprogress === 100) {
-        return `${
-          pokemon?.name || "Pikachu"
-        }: Incredible! You've completed all your tasks!🚀🎉`;
-      }
+        } : Incredible! You've completed all your tasks!🚀🎉`
+      );
+    }
 
-      if (pokemonStrength >= 50 && pokemonStrength < 100) {
-        return `${pokemon?.name}: Your strength is growing! Keep it up!💪`;
-      } else if (pokemonStrength >= 100 && pokemonStrength < 150) {
-        return `${pokemon?.name}: You're getting stronger! Keep pushing your limits!⚡`;
-      } else if (pokemonStrength >= 150 && pokemonStrength < 200) {
-        return `${pokemon?.name}: You're almost unstoppable! Incredible progress!🔥`;
-      } else if (pokemonStrength === 200) {
-        return `${pokemon?.name}: Max strength achieved! You're a powerhouse!💥`;
-      }
-      return "Meaw Meaw Meaw :)";
-    };
-
-    setMotivationalMessage(calculateMessage());
+    if (pokemonStrength >= 50 && pokemonStrength < 100) {
+      setMotivationalMessage(
+        `${pokemon?.name}: Your strength is growing! Keep it up!💪`
+      );
+    } else if (pokemonStrength >= 100 && pokemonStrength < 150) {
+      setMotivationalMessage(
+        `${pokemon?.name}: You're getting stronger! Keep pushing your limits!⚡`
+      );
+    } else if (pokemonStrength >= 150 && pokemonStrength < 200) {
+      setMotivationalMessage(
+        `${pokemon?.name}: You're almost unstoppable! Incredible progress!🔥`
+      );
+    } else if (pokemonStrength === 200) {
+      setMotivationalMessage(
+        `${pokemon?.name}: Max strength achieved! You're a powerhouse!💥`
+      );
+    }
   }, [progressPercentage, pokemonStrength, pokemon?.name]);
-
   return (
     <div className="pokemon-card">
       <h4 className="pokemon-card-title">
