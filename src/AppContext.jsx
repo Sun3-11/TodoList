@@ -207,7 +207,7 @@ export const AppContext = ({ children }) => {
     );
     setTasks(updatedTasks);
     setLocalStorage(`${user.username}_tasks`, updatedTasks);
-    toast.success("Task completed!");
+    // toast.success("Task completed!");
   };
 
   // convert minutes to hour

@@ -1,5 +1,6 @@
 import { MdDelete } from "react-icons/md";
 import { useGlobalContext } from "../../AppContext";
+import { toast } from "react-toastify";
 
 import { IoIosArrowUp } from "react-icons/io";
 
@@ -164,7 +165,10 @@ const Timetable = () => {
             <div className="task-buttons">
               <button
                 className="complete-button"
-                onClick={() => completeTask(task.id)}
+                onClick={() => {
+                  toast.success("Task Updated successfully !");
+                  return completeTask(task.id);
+                }}
               >
                 Complete
               </button>
