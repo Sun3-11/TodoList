@@ -382,6 +382,7 @@ Sidebar
   box-shadow: var(---red-dark);
   transition: var(--transition);
   transform: translate(-100%);
+  z-index: 1;
 }
 .show-sidebar {
   transform: translate(0);
@@ -489,7 +490,7 @@ nav {
   border: 1px solid #d1d9e6;
   border-radius: 10px;
   padding: 5%;
-  width: 40%;
+  width: 60%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-family: Arial, sans-serif;
@@ -606,7 +607,57 @@ nav {
     transform: translateY(-5px);
   }
 }
+/* للهواتف الصغيرة */
+@media (max-width: 600px) {
+  .pokemon-card {
+    width: 90%;
+    margin: 2rem auto;
+    padding: 3%;
+  }
 
+  .pokemon-card-title {
+    font-size: 1rem;
+  }
+
+  .pokemon-image {
+    width: 50%;
+  }
+
+  .pokemon-tasks {
+    font-size: 0.9rem;
+  }
+
+  .pokemon-message {
+    font-size: 0.9rem;
+    max-width: 250px;
+  }
+}
+
+/* للأجهزة المتوسطة مثل التابلت */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .pokemon-card {
+    width: 70%;
+    margin: 4rem auto;
+    padding: 4%;
+  }
+
+  .pokemon-card-title {
+    font-size: 1.1rem;
+  }
+
+  .pokemon-image {
+    width: 40%;
+  }
+
+  .pokemon-tasks {
+    font-size: 0.95rem;
+  }
+
+  .pokemon-message {
+    font-size: 1rem;
+    max-width: 280px;
+  }
+}
 /* Add todo */
 .lists-container {
   display: flex;

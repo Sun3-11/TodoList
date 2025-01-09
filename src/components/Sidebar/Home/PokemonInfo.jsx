@@ -26,25 +26,29 @@ const PokemonInfo = ({
       setMotivationalMessage("Let's start this adventure together!🤗");
     } else if (progressPercentage > 0 && progressPercentage < 20) {
       setMotivationalMessage(
-        `${pokemon?.name}: You've just begun! Keep pushing!💪`
+        `${pokemon?.name || "Pikachu"}: You've just begun! Keep pushing!💪`
       );
     } else if (progressPercentage >= 20 && progressPercentage < 40) {
       setMotivationalMessage(
-        `${pokemon?.name}: You're doing great! Keep it up!🌟`
+        `${pokemon?.name || "Pikachu"}: You're doing great! Keep it up!🌟`
       );
     } else if (progressPercentage >= 40 && progressPercentage < 60) {
       setMotivationalMessage(
-        `${pokemon?.name}: Halfway there! Keep going strong!🔥`
+        `${pokemon?.name || "Pikachu"}: Halfway there! Keep going strong!🔥`
       );
     } else if (progressPercentage >= 60 && progressPercentage < 80) {
-      setMotivationalMessage(`${pokemon?.name}: Almost there! You got this!💥`);
+      setMotivationalMessage(
+        `${pokemon?.name || "Pikachu"}: Almost there! You got this!💥`
+      );
     } else if (progressPercentage >= 80 && progressPercentage < 100) {
       setMotivationalMessage(
-        `${pokemon?.name}: So close! The finish line is near!🏁`
+        `${pokemon?.name || "Pikachu"}: So close! The finish line is near!🏁`
       );
-    } else if (progressPercentage === 100) {
+    } else if (progressPercentage && Todoprogress === 100) {
       setMotivationalMessage(
-        `${pokemon?.name} : Incredible! You've completed all your tasks!🚀🎉`
+        `${
+          pokemon?.name || "Pikachu"
+        } : Incredible! You've completed all your tasks!🚀🎉`
       );
     }
 
@@ -65,7 +69,7 @@ const PokemonInfo = ({
         `${pokemon?.name}: Max strength achieved! You're a powerhouse!💥`
       );
     }
-  }, [progressPercentage, pokemon, pokemonStrength]);
+  }, [progressPercentage, pokemonStrength]);
   return (
     <div className="pokemon-card">
       <h4 className="pokemon-card-title">

@@ -59,11 +59,11 @@ export const AppContext = ({ children }) => {
     toast.info(
       `Welcome, ${username}! Your Pokémon is ${pokemon.name}. They will motivate you on your journey!`
     );
-    if (isNewUser) {
-      toast.info(
-        `Welcome, ${username}! Your Pokémon is ${pokemon.name}. They will motivate you on your journey!`
-      );
-    }
+    // if (isNewUser) {
+    //   toast.info(
+    //     `Welcome, ${username}! Your Pokémon is ${pokemon.name}. They will motivate you on your journey!`
+    //   );
+    // }
   };
 
   //-----------------------------start func----------------------------------
